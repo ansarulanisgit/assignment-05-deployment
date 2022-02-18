@@ -3,22 +3,24 @@
 function getInputValue(inputId, validationId){
     const getInput = document.getElementById(inputId);
     const getInputText = getInput.value;
-    const inputAmount = parseFloat(getInputText);
-    if(isNaN(inputAmount)){
+
+    if(isNaN(getInputText)){
         const errorText = document.getElementById(validationId);
         errorText.style.display = "block";
-        
-    }
-    else if(inputAmount<0){
-        const errorText = document.getElementById(validationId);
-        errorText.style.display = "block";
-        errorText.innerText = "Negative number is not acceptable."
-       
     }
     else{
-        const errorText = document.getElementById(validationId);
-        errorText.style.display = "none";
-        return inputAmount;
+        const inputAmount = parseFloat(getInputText);
+        if(inputAmount<0){
+            const errorText = document.getElementById(validationId);
+            errorText.style.display = "block";
+            errorText.innerText = "Negative number is not acceptable.";
+        }
+        else{
+            const errorText = document.getElementById(validationId);
+            errorText.style.display = "none";
+            return inputAmount;
+        }       
+
     }
     
 }
